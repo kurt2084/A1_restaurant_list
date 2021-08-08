@@ -23,15 +23,19 @@ app.get('/', (req, res) => {
 
 // set show restaurant detail
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  console.log(req.params.restaurant_id)
-  const restaurnt = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
+  // console.log(req.params.restaurant_id)
+  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
   res.render('show', { restaurant: restaurant })
 })
 
 // set searching restaurant
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.toLowerCase()
-
+  const restaurants = restaurantList.results.filter(restaurant => {
+    return restaurant.name.toLowerCase().includes(keyword) ||
+      restaurant.category.toLowerCase().includes(keyword)
+  })
+  res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
 // start and listen on the Express server
