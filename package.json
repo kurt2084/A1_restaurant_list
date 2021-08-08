@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/kurt2084/A1_restaurant_list/issues"
   },
-  "homepage": "https://github.com/kurt2084/A1_restaurant_list#readme"
+  "homepage": "https://github.com/kurt2084/A1_restaurant_list#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  }
 }
